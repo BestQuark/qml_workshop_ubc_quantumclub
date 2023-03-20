@@ -1,4 +1,4 @@
-# UBC Quantum Club Workshop: Quantum Machine Learning
+# UBC Quantum Club Workshop: Quantum Machine Learning ⚛️🤖
 
 This repository contains Jupyter notebooks for the Quantum Machine Learning workshop organized by the UBC Quantum Club. The workshop covers both classical machine learning and quantum machine learning techniques. The main goal of this workshop is to provide a comprehensive understanding of machine learning algorithms and how to apply quantum computing concepts to enhance their performance.
 
