@@ -7,4 +7,5 @@ qiskit-machine-learning
 plotly
 pylatexenc
 seaborn
+ipywidgets
 mentpy
