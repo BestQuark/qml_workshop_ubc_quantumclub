@@ -37,9 +37,9 @@ To follow along with the workshop, you should have:
 
 2. Install Anaconda or Miniconda to set up a virtual environment and manage packages.
 
-3. Create a new conda environment with Python 3.8:
+3. Create a new conda environment with Python 3.10:
     ```
-    conda create -n qml-workshop python=3.8
+    conda create -n qml-workshop python=3.10
     ```
 
 4. Activate the conda environment:
