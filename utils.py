@@ -2,6 +2,7 @@ import numpy as np
 from qiskit import Aer, execute
 from qiskit.visualization import plot_bloch_vector
 from qiskit.visualization.bloch import Bloch
+from qiskit.circuit import ParameterVector, Parameter
 
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
@@ -169,3 +170,20 @@ def plot_decision_boundary(model, X, y, pad=1):
     plt.contourf(xx, yy, Z, alpha=0.4, cmap=cmap)
     plt.scatter(X[:, 0], X[:, 1], c=y, alpha=0.8, cmap=cmap)
     plt.show()
+
+
+def statevectors_for_circuit(circuit, data):
+    backend = Aer.get_backend('statevector_simulator')
+    n_circuits = data.shape[0]
+    statevectors = np.zeros((n_circuits,2),dtype = complex)
+    for i in range(n_circuits):
+
+        feature_map = circuit.assign_parameters((data[i,0], data[i,1]))
+        # Run the quantum circuit on a statevector simulator backend
+        job = backend.run(feature_map)
+        result = job.result()
+        outputstate = result.get_statevector(feature_map, decimals=3)
+        statevectors[i,:] = outputstate
+    
+    return statevectors
+        

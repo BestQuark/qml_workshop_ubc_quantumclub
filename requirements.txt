@@ -4,4 +4,7 @@ scikit-learn
 jupyterlab
 qiskit
 qiskit-machine-learning
+plotly
+pylatexenc
+seaborn
 mentpy
