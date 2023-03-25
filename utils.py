@@ -2,9 +2,13 @@ import numpy as np
 from qiskit import Aer, execute
 from qiskit.visualization import plot_bloch_vector
 from qiskit.visualization.bloch import Bloch
+from qiskit_machine_learning.algorithms import QSVC
+from qiskit_machine_learning.kernels import FidelityQuantumKernel
 
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
+
+import seaborn as sns
 
 class_A_color = '#636EFA'
 class_B_color = '#EF553B'
@@ -169,3 +173,15 @@ def plot_decision_boundary(model, X, y, pad=1):
     plt.contourf(xx, yy, Z, alpha=0.4, cmap=cmap)
     plt.scatter(X[:, 0], X[:, 1], c=y, alpha=0.8, cmap=cmap)
     plt.show()
+
+
+def plot_kernel_matrix(X_train, y_train, data_encoding_circuit):
+
+    X_train_class_0 = [x for x, y in zip(X_train, y_train) if y == 0]
+    X_train_class_1 = [x for x, y in zip(X_train, y_train) if y == 1]
+    X_train_sorted = np.array([*X_train_class_0, *X_train_class_1])
+
+    kernel = FidelityQuantumKernel(feature_map=data_encoding_circuit)
+    qsvc = QSVC(quantum_kernel=kernel)
+    kernel_matrix = qsvc.quantum_kernel.evaluate(X_train_sorted)
+    sns.heatmap(kernel_matrix)
