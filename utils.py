@@ -25,3 +25,16 @@ def plot_dataset_on_bloch_sphere(model, X, y):
     bloch_sphere.add_points(points_1, 'g')
 
     plt.show()
+
+def plot_decision_boundary(model, X, y, pad=1):
+    x_min, x_max = X[:, 0].min() - pad, X[:, 0].max() + pad
+    y_min, y_max = X[:, 1].min() - pad, X[:, 1].max() + pad
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.02),
+                         np.arange(y_min, y_max, 0.02))
+
+    Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
+    Z = Z.reshape(xx.shape)
+    cmap = plt.cm.RdBu
+    plt.contourf(xx, yy, Z, alpha=0.4, cmap=cmap)
+    plt.scatter(X[:, 0], X[:, 1], c=y, alpha=0.8, cmap=cmap)
+    plt.show()
