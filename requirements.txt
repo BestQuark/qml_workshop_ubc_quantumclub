@@ -1,8 +1,7 @@
 numpy
-scipy
 matplotlib
-pandas
 scikit-learn
 jupyterlab
-pennylane
+qiskit
+qiskit-machine-learning
 mentpy
