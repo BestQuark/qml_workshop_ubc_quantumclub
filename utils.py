@@ -2,12 +2,12 @@ import numpy as np
 from qiskit import Aer, execute
 from qiskit.visualization import plot_bloch_vector
 from qiskit.visualization.bloch import Bloch
-<<<<<<< HEAD
+
 from qiskit.circuit import ParameterVector, Parameter
-=======
+
 from qiskit_machine_learning.algorithms import QSVC
 from qiskit_machine_learning.kernels import FidelityQuantumKernel
->>>>>>> origin/main
+
 
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
